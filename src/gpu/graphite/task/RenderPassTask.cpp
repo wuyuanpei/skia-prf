@@ -17,8 +17,6 @@
 #include "src/gpu/graphite/Texture.h"
 #include "src/gpu/graphite/TextureProxy.h"
 
-#include <iostream>
-
 namespace skgpu::graphite {
 
 sk_sp<RenderPassTask> RenderPassTask::Make(DrawPassList passes,
@@ -138,7 +136,6 @@ Task::Status RenderPassTask::addCommands(Context* context,
                                      std::move(depthStencilAttachment),
                                      SkRect::Make(fTarget->dimensions()),
                                      fDrawPasses)) {
-        
         return Status::kSuccess;
     } else {
         return Status::kFail;

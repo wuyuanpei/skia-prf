@@ -29,8 +29,6 @@
 #include "src/gpu/graphite/vk/VulkanTexture.h"
 #include "src/gpu/vk/VulkanUtilsPriv.h"
 
-#include <iostream>
-
 using namespace skia_private;
 
 namespace skgpu::graphite {
@@ -396,11 +394,6 @@ bool VulkanCommandBuffer::onAddRenderPass(const RenderPassDesc& renderPassDesc,
                                           SkRect viewport,
                                           const DrawPassList& drawPasses) {
     
-    static int count = 0;
-    std::cout << "add one render passx " << count << std::endl;
-    
-    if (count % 4 == 0) {
-        std::cout << "start" << count << std::endl;
     for (const auto& drawPass : drawPasses) {
         // Our current implementation of setting texture image layouts does not allow layout changes
         // once we have already begun a render pass, so prior to any other commands, set the layout
@@ -431,18 +424,11 @@ bool VulkanCommandBuffer::onAddRenderPass(const RenderPassDesc& renderPassDesc,
         return false;
     }
     
-    }
     for (const auto& drawPass : drawPasses) {
         this->addDrawPass(drawPass.get());
     }
     
-
-    if(count % 4 == 3) {
-        this->endRenderPass();
-    }
-
-    count ++;
-
+    this->endRenderPass();
     return true;
 }
 
