@@ -8,6 +8,7 @@
 #include "include/gpu/graphite/BackendSemaphore.h"
 #include "include/private/gpu/vk/SkiaVulkan.h"
 #include "src/gpu/graphite/BackendSemaphorePriv.h"
+#include "include/gpu/graphite/vk/VulkanGraphiteTypes.h"
 
 #include <cstdint>
 
